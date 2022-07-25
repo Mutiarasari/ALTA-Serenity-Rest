@@ -3,6 +3,7 @@ package reqres.api;
 import io.restassured.http.ContentType;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
+import org.openqa.selenium.json.Json;
 
 import java.io.File;
 
@@ -16,6 +17,7 @@ public class ReqresApi {
     public static String POST_CREATE_USER = URL+"api/users";
     public static String PUT_UPDATE_USER = URL+"api/users/{id}";
     public static String DELETE_USER = URL+"api/users/{id}";
+
 
     @Step("Get list user")
     public void getListUser(String page) {
@@ -43,4 +45,6 @@ public class ReqresApi {
         SerenityRest.given()
                 .pathParam("id", idUser);
     }
+
+
 }

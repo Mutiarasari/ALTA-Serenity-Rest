@@ -114,4 +114,6 @@ public class ReqresStepDef {
     public void statusCodeShouldBe(int statusCode) {
         SerenityRest.then().statusCode(statusCode);
     }
+
+
 }
