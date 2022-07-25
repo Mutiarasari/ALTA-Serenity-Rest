@@ -93,4 +93,39 @@ public class TugasStepDef {
         File jsonFile = new File(ReqresApi.JSON_FILE+"/Bebas4.json");
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(jsonFile));
     }
+
+    @Given("Get single invalid resource with {int}")
+    public void getSingleInvalidResourceWith(int id) {
+        tugasApi.getInvalidResource(id);
+    }
+
+    @When("send request invalid resource")
+    public void sendRequestInvalidResource() {
+        SerenityRest.when().get(TugasApi.GET_INVALID_RESOURCE);
+    }
+
+    @Then("Status code should be {int} Not found")
+    public void statusCodeShouldBeNotFound(int status) {
+        SerenityRest.then().statusCode(status);
+    }
+    @Given("Get Register")
+    public void getRegister() {
+        tugasApi.setGetRegister();
+    }
+
+    @Given("Post reg to invalid url")
+    public void postRegToInvalidUrl() {
+        File jsonFiles = new File(ReqresApi.DIR+"/src/test/resources/json/PostRegister.json");
+        tugasApi.PostRegister(jsonFiles);
+    }
+
+    @When("send request to invalid url")
+    public void sendRequestToInvalidUrl() {
+        SerenityRest.when().post(TugasApi.GET_LIST_RESOURCE);
+    }
+
+    @Then("Status code should be {int} Bad Request")
+    public void statusCodeShouldBeBadRequest(int stats) {
+        SerenityRest.then().statusCode(stats);
+    }
 }

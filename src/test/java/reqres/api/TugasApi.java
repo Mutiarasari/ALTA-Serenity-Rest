@@ -18,6 +18,8 @@ public class TugasApi {
     public static String GET_SINGLE_RESOURCE = URL+"api/unknown/{id}";
     public static String POST_REGISTER = URL + "api/register";
     public static String PATCH_USER = URL + "api/users/{id}";
+    public static String GET_INVALID_RESOURCE = URL+"api/unknown/{id}";
+    public static String GET_REGISTER = URL + "api/register";
 
     @Step("Get list resource")
     public void getListResource(){
@@ -28,6 +30,16 @@ public class TugasApi {
         SerenityRest.given()
                 .pathParam("id",id);  // Ngasi parameter id
     }
+    @Step
+    public void getInvalidResource(int id){
+        SerenityRest.given()
+                .pathParam("id",id);
+    }
+    @Step
+    public void setGetRegister(){
+        SerenityRest.given();
+    }
+
     @Step("Post Register")
     public void PostRegister(File json){
         SerenityRest.given()
